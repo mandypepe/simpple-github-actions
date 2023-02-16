@@ -1,0 +1,8 @@
+name: Run shell comand
+on: [push,fork,pull_request]
+jobs:
+  run-shell-comands:
+    runs-on: ubuntu-latest
+      steps:
+        - name: Echo command
+          run: echo "hello  "
