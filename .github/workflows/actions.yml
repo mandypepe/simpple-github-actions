@@ -8,7 +8,16 @@ jobs:
           run: echo "hello  "
         - uses: actions/checkout@master
         - name: RunSnyk to check for vulnerabilities
-          uses: snyk/actions/maven@master
+          uses: snyk/actions/maven@master #snyk/actions/php@master #snyk/actions/python@master #snyk/actions/python-3.8@master
           continue-on-error: true
           env:
             SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: ZAP Scan
+          uses: zaproxy/action-baseline@v0.6.1
+          with:
+            docker_name: 'owasp/zap2docker-stable'
+            target: 'http://testphp.vulnweb.com/'
+            rules_file_name: '.zap/rules.tsv'
+            cmd_options: '-a'
