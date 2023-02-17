@@ -6,7 +6,7 @@ jobs:
     name: Scan the web application
     steps:
       - name: Checkout
-        uses: actions/checkout@v2 # escanear el codigo mas reciente de esta accion (zap_scan)
+        uses: actions/checkout@v3 # escanear el codigo mas reciente de esta accion (zap_scan)
         with:
           ref: master # hacemos referencia a la rama master de esta seccion
       - name: ZAP Scan
